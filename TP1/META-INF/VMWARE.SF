@@ -1,0 +1,36 @@
+Signature-Version: 1.0
+SHA-256-Digest-Manifest-Main-Attributes: LZu0XxDqofOxTryq0L46g8y7hDE/D
+ ycRJW76Paz1D5E=
+SHA-256-Digest-Manifest: HYnwJ/6I8vPpC0vuNHbZAabe2HXvgUloMM7wZlBOpkQ=
+Created-By: 1.7.0_67 (Oracle Corporation)
+
+Name: src/observer/Observer.java
+SHA-256-Digest: nZCZfeY80VxbMktyOULZDjQVdGzmR++EmRQqbnLNcjI=
+
+Name: src/observer/Subject.java
+SHA-256-Digest: +08Z4rr0xPPIoY+7bXJECAyaoU99G98m0HeUT1pI2oo=
+
+Name: src/observer/ColorLabel.java
+SHA-256-Digest: r5gB2SS2cpm5bvynbXwXyoP3eScJTinEIHon8FzQI1I=
+
+Name: .classpath
+SHA-256-Digest: re7SauPBTkv6Se/mvCGavZm/fURdOAukueQqZQ4uvkY=
+
+Name: src/observer/Display.java
+SHA-256-Digest: nDiGpSi2HhvsfUV8wC0XQHip+DTSaKI1x1CHMniJAKU=
+
+Name: META-INF/eclipse.inf
+SHA-256-Digest: ak2bzOGDjLurhLXRsFA/N7TRhvaP+YA1QdnivLjcXtk=
+
+Name: src/observer/SubjectObserverProtocolImpl.aj
+SHA-256-Digest: /2sE1IGU/80KaKno4vbC1Reuwhu4B2GaohT00McHQlU=
+
+Name: src/observer/SubjectObserverProtocol.aj
+SHA-256-Digest: WnCQde+7XRJhwt3mV7QkDZIO+vwe7nWD0aDab2DwEpk=
+
+Name: src/observer/Button.java
+SHA-256-Digest: YXykGZ+3i5POqV9WlOLxeIop1jAMo6hBmHOghVtaDAA=
+
+Name: src/observer/Demo.java
+SHA-256-Digest: FB0y0V8YIuVdNoJ/tF51pe4FeuCezrbC5W2RSqycR40=
+
