@@ -13,7 +13,7 @@ about the software, its performance or its conformity to any specification.
 
 package observer;
 
-class Publisher{
+class Publisher extends AbstractPubSub{
 
 	
 	 private String name;
@@ -36,5 +36,11 @@ class Publisher{
     
     public String getText(){
    	 return e.getText();
+    }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return super.toString();
     }
 }

@@ -15,7 +15,7 @@ package observer;
 
 import java.util.Vector;
 
-class Subscriber{
+class Subscriber extends AbstractPubSub{
 
 	
 	 private String name, textAboRecu;
@@ -41,6 +41,12 @@ class Subscriber{
    	 }else{
    		 t.setText("");
    	 }
+    }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return super.toString();
     }
     
 }
