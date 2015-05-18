@@ -16,6 +16,7 @@ import java.awt.Dimension;
 import java.awt.TextArea;
 import java.awt.TextField;
 import java.awt.Container;
+import java.util.Vector;
 
 
 
@@ -24,10 +25,35 @@ public class Demo {
 
         Display display = new Display("Publish and Subscribe");
         
+        /**
+         * Ajouter un bouton pour ajouter un Publisher 
+         * et un autre pour ajouter des Subscriber
+        **/
         
-        Publisher p1 = new Publisher(display,"1er éditeur");
-        Publisher p2 = new Publisher(display,"2nd éditeur");
+        Publisher p1 = new Publisher(display,"1er éditeur",1);
+        Publisher p2 = new Publisher(display,"2nd éditeur",5);
         
+        
+        /**
+         * Liste, du moins des vector contenant le numéro de l'abonnement
+         */
+        
+	        Vector v1 = new Vector<Integer>();
+	        v1.add(1);
+	        v1.add(2);
+	        Vector v2 = new Vector<Integer>();
+	        v2.add(4);
+	        v2.add(5);
+        
+        
+        Subscriber s1 = new Subscriber(display,"Adrien",v1);
+        Subscriber s2 = new Subscriber(display,"Anthony",v2);
+        
+        
+        /**
+         * juste pour avoir une interface en colonne, j'ai pas regardé comment
+         * les mettre les un en dessous des autres
+        **/
         display.setPrefSize(new Dimension(250, 300));
         
         

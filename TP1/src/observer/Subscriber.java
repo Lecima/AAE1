@@ -13,25 +13,26 @@ about the software, its performance or its conformity to any specification.
 
 package observer;
 
-class Publisher{
+import java.util.Vector;
+
+class Subscriber{
 
 	
-	 private String name;
+	 private String name, textAboRecu;
     private TextName t;
-    private TextAEnvoyer e;
-    private Button b;
-    private int nbAbo;
+    private Vector<Integer> abonnements;
+    
 
-    public Publisher(Display d,String n,int numeroAbonnement) {
+
+    public Subscriber(Display d,String n,Vector<Integer> a) {
    	 super();
-   	 name = n;
-   	 nbAbo=numeroAbonnement;
+   	 name = n;   	 
+   	 abonnements = a;
    	 t = new TextName(d,n);
-   	 b = new Button(d);
-   	 e = new TextAEnvoyer(d);
     }
-    public Publisher(Display d){
-   	 this(d,"null",0);
+    
+    public Subscriber(Display d){
+   	 this(d,"null",new Vector<Integer>());
     }
     
 }
