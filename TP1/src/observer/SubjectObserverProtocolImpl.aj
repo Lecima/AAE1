@@ -18,14 +18,23 @@ aspect SubjectObserverProtocolImpl extends SubjectObserverProtocol {
 
     declare parents: Button implements Subject;
     public Object Button.getData() { return this; }
+    
+    
 
     declare parents: ColorLabel implements Observer;
     public void    ColorLabel.update() {
         colorCycle();
     }
 
+    
+    declare parents: Subscriber implements Observer;
+    public void    Subscriber.update() {
+   	 changeString();
+    }
+
     pointcut stateChanges(Subject s):
         target(s) &&
         call(void Button.click());
+
 
 }

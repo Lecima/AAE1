@@ -19,7 +19,7 @@ class Subscriber{
 
 	
 	 private String name, textAboRecu;
-    private TextName t;
+    public TextName t;
     private Vector<Integer> abonnements;
     
 
@@ -33,6 +33,14 @@ class Subscriber{
     
     public Subscriber(Display d){
    	 this(d,"null",new Vector<Integer>());
+    }
+    
+    void changeString(){
+   	 if(t.getText().compareTo("")==0){
+   		 t.setText("toto");
+   	 }else{
+   		 t.setText("");
+   	 }
     }
     
 }

@@ -19,7 +19,7 @@ class Publisher{
 	 private String name;
     private TextName t;
     private TextAEnvoyer e;
-    private Button b;
+    public Button b;
     private int nbAbo;
 
     public Publisher(Display d,String n,int numeroAbonnement) {
@@ -34,4 +34,7 @@ class Publisher{
    	 this(d,"null",0);
     }
     
+    public String getText(){
+   	 return e.getText();
+    }
 }

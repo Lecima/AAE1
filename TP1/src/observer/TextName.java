@@ -23,4 +23,12 @@ class TextName extends Label {
     public TextName(Display d) {
    	 this(d, "Null");
 	}
+    
+    void changeString(){
+   	 if(this.toString().isEmpty()){
+   		 this.setText("toto");
+   	 }else{
+   		 this.setText("");
+   	 }
+    }
 }
