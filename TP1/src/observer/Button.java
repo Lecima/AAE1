@@ -21,7 +21,7 @@ class Button extends java.awt.Button {
 
     static final Color  defaultBackgroundColor = Color.gray;
     static final Color  defaultForegroundColor = Color.black;
-    static final String defaultText = "cycle color";
+    static final String defaultText = "Envoyer";
 
     Button(Display display) {
         super();

@@ -12,10 +12,26 @@ about the software, its performance or its conformity to any specification.
 
 package observer;
 
+import java.awt.Dimension;
+import java.awt.TextArea;
+import java.awt.TextField;
+import java.awt.Container;
+
+
+
 public class Demo {
     public static void main(String[] args) {
 
-        Display display = new Display();
+        Display display = new Display("Publish and Subscribe");
+        
+        
+        Publisher p1 = new Publisher(display,"1er éditeur");
+        Publisher p2 = new Publisher(display,"2nd éditeur");
+        
+        display.setPrefSize(new Dimension(250, 300));
+        
+        
+        /*
         Button b1 = new Button(display);
         Button b2 = new Button(display);
         ColorLabel c1 = new ColorLabel(display);
@@ -25,5 +41,7 @@ public class Demo {
         b1.addObserver(c1);
         b1.addObserver(c2);
         b2.addObserver(c3);
+        
+        */
     }
 }

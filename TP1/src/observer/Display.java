@@ -11,6 +11,7 @@ about the software, its performance or its conformity to any specification.
 */
 
 package observer;
+import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Panel;
 import java.awt.Container;
@@ -27,20 +28,27 @@ import java.awt.BorderLayout;
 
 class Display extends Panel {
 
-    protected Frame frame = new Frame("Subject/Observer Demo");
+    protected Frame frame;
 
-    Display() {
+    Display(String title) {
+
+        frame = new Frame(title);
         frame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {System.exit(0);}
             });
-
         frame.add(this, BorderLayout.CENTER);
         frame.pack();
         frame.setVisible(true);
+        
+        frame.setPreferredSize(new Dimension(250, 300));
     }
 
     void addToFrame(Component c) {
         add(c);
         frame.pack();
+    }
+    
+    void setPrefSize(Dimension d){
+   	 frame.setPreferredSize(d);
     }
 }
