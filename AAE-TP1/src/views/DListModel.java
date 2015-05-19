@@ -7,9 +7,6 @@ import observer.AbstractPubSub;
 
 public class DListModel extends DefaultComboBoxModel<AbstractPubSub> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	public void addElement(AbstractPubSub a){

@@ -1,8 +1,6 @@
 package views;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
@@ -37,10 +35,6 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JScrollPane;
 
-import java.awt.GridLayout;
-
-import javax.swing.SwingConstants;
-
 import java.awt.Font;
 
 public class MainWindow implements IView {
@@ -55,7 +49,6 @@ public class MainWindow implements IView {
 	private DListModel listCat = new DListModel();
 	private DListModel listCat2 = new DListModel();
 	private DListModel listCat3 = new DListModel();
-	public static MainWindow mw;
 	private JTextField txtCategory;
 
 	

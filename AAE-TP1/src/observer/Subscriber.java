@@ -12,12 +12,10 @@ public class Subscriber extends AbstractPubSub{
     public Subscriber(String name) {
 		super(name);
 		this.listCategory = new ArrayList<Category>();
-		//sendGUIMessage(this.getName() + " has been created");
 	}
     
     public void getMessage(Message m){
     	setLastMessage(m);
-    	//sendGUIMessage(this.getName() + " has received a new message  : " + this.lastMessage + " from " + this.lastPublisher.getName());
     }
     
     @Override
@@ -43,7 +41,6 @@ public class Subscriber extends AbstractPubSub{
     	if(!listCategory.contains(c)){
     		listCategory.add(c);
     		lastCategory = c;
-    		//sendGUIMessage(this.getName() + " has a new subscription  : " + this.lastPublisher);
      	}
     }
     
@@ -51,7 +48,6 @@ public class Subscriber extends AbstractPubSub{
     	if(listCategory.contains(c)){
     		listCategory.remove(c);
     		lastCategory = c;
-    		//sendGUIMessage(this.getName() + " has a new subscription  : " + this.lastPublisher);
      	}
     }
     

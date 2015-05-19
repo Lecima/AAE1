@@ -2,12 +2,7 @@ package observer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
-
 import org.aspectj.lang.Signature;
-
-import views.DListModel;
-import views.MainWindow;
 import views.IView;
 
 aspect ObserverAspectImpl extends ObserverAspect {
@@ -142,7 +137,6 @@ aspect ObserverAspectImpl extends ObserverAspect {
     		message = "--- " + m.getName() + " has been removed.";
     	}
     	if(!message.equals("") && !message.equals(lastGUIMessage)){
-    		//MainWindow.mw.displayMessage(message);
     		setLastGUIMessage(message);
     	}
     }

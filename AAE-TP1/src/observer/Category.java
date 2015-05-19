@@ -1,8 +1,5 @@
 package observer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Category extends AbstractPubSub {
 
 	public Category(String name) {
