@@ -9,7 +9,7 @@ import org.aspectj.lang.Signature;
 import views.DListModel;
 import views.MainWindow;
 
-aspect SubjectObserverProtocolImpl extends SubjectObserverProtocol {
+aspect ObserverAspectImpl extends ObserverAspect {
 	private List<Publisher> listPublisher = new ArrayList<>();
 	private List<Subscriber> listSubscriber = new ArrayList<>();
 

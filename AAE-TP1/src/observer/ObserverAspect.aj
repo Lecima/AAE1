@@ -2,7 +2,7 @@ package observer;
 
 import java.util.Vector;
 
-abstract aspect SubjectObserverProtocol {
+abstract aspect ObserverAspect {
 
     abstract pointcut stateChanges(Subject s);
 

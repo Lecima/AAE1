@@ -22,8 +22,21 @@ public class Subscriber extends AbstractPubSub{
     
     @Override
     public String toString() {
-    	// TODO Auto-generated method stub
-    	return super.toString();
+    	String cats = "(";
+    	int i = 0;
+    	for(Category cat : listCategory){
+    		cats += cat + ", ";
+    		if(i > 1){
+    			cats += ".....";
+    			break;
+    		}
+    		i++;
+    	}
+    	if(cats.length() > 1){
+    		cats = cats.substring(0, cats.length()-2);
+    	}
+    	cats += ")";
+    	return super.toString() + (cats.length() == 2 ? "" : " " + cats);
     }
     
     public void addCategory(Category c){

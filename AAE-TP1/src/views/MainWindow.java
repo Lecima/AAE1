@@ -34,6 +34,9 @@ import observer.Subscriber;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import java.awt.GridLayout;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class MainWindow {
 
@@ -59,6 +62,7 @@ public class MainWindow {
 					MainWindow window = new MainWindow();
 					window.frmAaeTp.setVisible(true);
 					mw = window;
+					mw.defaultValues();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -95,18 +99,33 @@ public class MainWindow {
 		
 		frmAaeTp = new JFrame();
 		BorderLayout borderLayout = (BorderLayout) frmAaeTp.getContentPane().getLayout();
-		borderLayout.setVgap(1);
-		borderLayout.setHgap(1);
+		borderLayout.setVgap(5);
+		borderLayout.setHgap(10);
 		frmAaeTp.setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/views/news.png")));
 		frmAaeTp.setResizable(false);
 		frmAaeTp.setTitle("AAE - TP1");
-		frmAaeTp.setBounds(100, 100, 658, 482);
+		frmAaeTp.setBounds(100, 100, 1000, 750);
 		frmAaeTp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		JPanel panel_10 = new JPanel();
+		frmAaeTp.getContentPane().add(panel_10, BorderLayout.SOUTH);
+		FlowLayout fl_panel_10 = new FlowLayout(FlowLayout.RIGHT, 5, 3);
+		panel_10.setLayout(fl_panel_10);
+		
+		JLabel lblNewLabel_2 = new JLabel("8INF853 - Architecture des applications d'entreprise - TP1 - Adrien Ecrepont - Anthony Amicel");
+		panel_10.add(lblNewLabel_2);
+		
+		JPanel panel_9 = new JPanel();
+		frmAaeTp.getContentPane().add(panel_9, BorderLayout.CENTER);
+		panel_9.setLayout(new BoxLayout(panel_9, BoxLayout.Y_AXIS));
+		
 		txtrActions = new JTextArea();
-		frmAaeTp.getContentPane().add(txtrActions, BorderLayout.CENTER);
 		txtrActions.setText("Actions");
+		panel_9.add(txtrActions);
 		txtrActions.setEditable(false);
+		
+		JScrollPane scrollPane_2 = new JScrollPane(txtrActions);
+		panel_9.add(scrollPane_2);
 		
 		JPanel panel_6 = new JPanel();
 		frmAaeTp.getContentPane().add(panel_6, BorderLayout.NORTH);
@@ -118,6 +137,7 @@ public class MainWindow {
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		
 		JLabel lblNewLabel_1 = new JLabel("Publisher subscriber using AOP and Observer Pattern");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_5.add(lblNewLabel_1);
 		
 		JSeparator separator = new JSeparator();
@@ -275,19 +295,33 @@ public class MainWindow {
 		});
 		panel_3.add(btnSendMessage);
 		
+		JPanel panel_7 = new JPanel();
+		frmAaeTp.getContentPane().add(panel_7, BorderLayout.WEST);
+		panel_7.setLayout(new BoxLayout(panel_7, BoxLayout.Y_AXIS));
+		
 		JList listPublisher2 = new JList();
-		frmAaeTp.getContentPane().add(listPublisher2, BorderLayout.WEST);
+		panel_7.add(listPublisher2);
 		listPublisher2.setBorder(new TitledBorder(null, "Publishers", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		listPublisher2.setVisibleRowCount(20);
 		listPublisher2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listPublisher2.setModel(listPub);
 		
+		JScrollPane scrollPane = new JScrollPane(listPublisher2);
+		panel_7.add(scrollPane);
+		
+		JPanel panel_8 = new JPanel();
+		frmAaeTp.getContentPane().add(panel_8, BorderLayout.EAST);
+		panel_8.setLayout(new BoxLayout(panel_8, BoxLayout.Y_AXIS));
+		
 		JList listSubscriber = new JList();
-		frmAaeTp.getContentPane().add(listSubscriber, BorderLayout.EAST);
+		panel_8.add(listSubscriber);
 		listSubscriber.setBorder(new TitledBorder(null, "Subscribers", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		listSubscriber.setVisibleRowCount(20);
 		listSubscriber.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listSubscriber.setModel(listSub);
+		
+		JScrollPane scrollPane_1 = new JScrollPane(listSubscriber);
+		panel_8.add(scrollPane_1);
 	}
 	
 	public void displayMessage(String message){
@@ -314,10 +348,28 @@ public class MainWindow {
 	
 	public void addSubscribe(Category c, Subscriber s){
 		s.addCategory(c);
+		listSub.addElement(null);
+		listSub.removeElement(null);
 	}
 	
 	public void removeSubscribe(Category c, Subscriber s){
 		s.removeCategory(c);
+	}
+	
+	private void defaultValues(){
+		addPublisher("New York Times");
+		addPublisher("USA Today");
+		addPublisher("Chicago Tribune");
+		addPublisher("La Voix du Nord");
+		addSubscriber("Michel Poutou");
+		addSubscriber("Guy Lamiche");
+		addSubscriber("Patrick Caddy");
+		addCategory("Politics");
+		addCategory("World");
+		addCategory("Business");
+		addCategory("Science");
+		addCategory("Sports");
+		
 	}
 
 }
