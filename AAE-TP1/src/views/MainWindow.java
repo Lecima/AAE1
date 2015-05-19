@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -33,9 +34,13 @@ import observer.Subscriber;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JScrollPane;
+
 import java.awt.GridLayout;
+
 import javax.swing.SwingConstants;
+
 import java.awt.Font;
 
 public class MainWindow {
@@ -49,6 +54,7 @@ public class MainWindow {
 	private DListModel listSub = new DListModel();
 	private DListModel listCat = new DListModel();
 	private DListModel listCat2 = new DListModel();
+	private DListModel listCat3 = new DListModel();
 	public static MainWindow mw;
 	private JTextField txtCategory;
 
@@ -102,9 +108,9 @@ public class MainWindow {
 		borderLayout.setVgap(5);
 		borderLayout.setHgap(10);
 		frmAaeTp.setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/views/news.png")));
-		frmAaeTp.setResizable(false);
 		frmAaeTp.setTitle("AAE - TP1");
-		frmAaeTp.setBounds(100, 100, 1000, 750);
+		frmAaeTp.setBounds(100, 100, 1200, 750);
+		frmAaeTp.setMinimumSize(new Dimension(900, 600));
 		frmAaeTp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel_10 = new JPanel();
@@ -147,7 +153,7 @@ public class MainWindow {
 		panel_6.add(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
-		JLabel lblNewLabel = new JLabel("Add a publisher");
+		JLabel lblNewLabel = new JLabel("Add a publisher     ");
 		panel.add(lblNewLabel);
 		
 		txtPublisher = new JTextField();
@@ -166,6 +172,27 @@ public class MainWindow {
 		});
 		panel.add(btnAddPublisher);
 		
+		JLabel label = new JLabel("                                                                                      ");
+		panel.add(label);
+		
+		JLabel lblRemoveAPublisher = new JLabel("Remove a publisher     ");
+		panel.add(lblRemoveAPublisher);
+		
+		JComboBox comboBox_2 = new JComboBox();
+		comboBox_2.setModel(listPub);
+		comboBox_2.setMaximumRowCount(300);
+		panel.add(comboBox_2);
+		
+		JButton btnRemove = new JButton("Remove");
+		btnRemove.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(comboBox_2.getSelectedItem() != null){
+					removePublisher((Publisher)comboBox_2.getSelectedItem());
+				}
+			}
+		});
+		panel.add(btnRemove);
+		
 		JSeparator separator_1 = new JSeparator();
 		panel_6.add(separator_1);
 		
@@ -173,7 +200,7 @@ public class MainWindow {
 		panel_6.add(panel_4);
 		panel_4.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
-		JLabel lblAddACategory = new JLabel("Add a category");
+		JLabel lblAddACategory = new JLabel("Add a category     ");
 		panel_4.add(lblAddACategory);
 		
 		txtCategory = new JTextField();
@@ -192,6 +219,27 @@ public class MainWindow {
 		});
 		panel_4.add(button);
 		
+		JLabel label_1 = new JLabel("                                                                                      ");
+		panel_4.add(label_1);
+		
+		JLabel lblRemoveACategory = new JLabel("Remove a category     ");
+		panel_4.add(lblRemoveACategory);
+		
+		JComboBox comboBox_4 = new JComboBox();
+		comboBox_4.setModel(listCat3);
+		comboBox_4.setMaximumRowCount(300);
+		panel_4.add(comboBox_4);
+		
+		JButton btnRemove_2 = new JButton("Remove");
+		btnRemove_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(comboBox_4.getSelectedItem() != null){
+					removeCategory((Category)comboBox_4.getSelectedItem());
+				}
+			}
+		});
+		panel_4.add(btnRemove_2);
+		
 		JSeparator separator_4 = new JSeparator();
 		panel_6.add(separator_4);
 		
@@ -199,7 +247,7 @@ public class MainWindow {
 		panel_6.add(panel_1);
 		panel_1.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
-		JLabel lblAddASubscriber = new JLabel("Add a subscriber");
+		JLabel lblAddASubscriber = new JLabel("Add a subscriber   ");
 		panel_1.add(lblAddASubscriber);
 		
 		txtSubscriber = new JTextField();
@@ -217,6 +265,27 @@ public class MainWindow {
 			}
 		});
 		panel_1.add(btnAddSubscriber);
+		
+		JLabel label_2 = new JLabel("                                                                                      ");
+		panel_1.add(label_2);
+		
+		JLabel lblRemoveASubscriber = new JLabel("Remove a subscriber   ");
+		panel_1.add(lblRemoveASubscriber);
+		
+		JComboBox comboBox_3 = new JComboBox();
+		comboBox_3.setModel(listSub);
+		comboBox_3.setMaximumRowCount(300);
+		panel_1.add(comboBox_3);
+		
+		JButton btnRemove_1 = new JButton("Remove");
+		btnRemove_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(comboBox_3.getSelectedItem() != null){
+					removeSubscriber((Subscriber)comboBox_3.getSelectedItem());
+				}
+			}
+		});
+		panel_1.add(btnRemove_1);
 		
 		JSeparator separator_3 = new JSeparator();
 		panel_6.add(separator_3);
@@ -280,7 +349,7 @@ public class MainWindow {
 		
 		txtMessage = new JTextField();
 		txtMessage.setToolTipText("Message");
-		txtMessage.setColumns(10);
+		txtMessage.setColumns(55);
 		panel_3.add(txtMessage);
 		
 		JButton btnSendMessage = new JButton("Send");
@@ -307,6 +376,9 @@ public class MainWindow {
 		listPublisher2.setModel(listPub);
 		
 		JScrollPane scrollPane = new JScrollPane(listPublisher2);
+		Dimension d = listPublisher2.getPreferredSize();
+		d.width = 250;
+		scrollPane.setPreferredSize(d);
 		panel_7.add(scrollPane);
 		
 		JPanel panel_8 = new JPanel();
@@ -321,6 +393,9 @@ public class MainWindow {
 		listSubscriber.setModel(listSub);
 		
 		JScrollPane scrollPane_1 = new JScrollPane(listSubscriber);
+		Dimension d2 = listSubscriber.getPreferredSize();
+		d2.width = 250;
+		scrollPane_1.setPreferredSize(d2);
 		panel_8.add(scrollPane_1);
 	}
 	
@@ -332,6 +407,25 @@ public class MainWindow {
 		listPub.addElement(new Publisher(name));
 	}
 	
+	public void removePublisher(Publisher p){
+		listPub.removeElement(p);
+		p.removeMe();
+	}
+	
+	public void removeSubscriber(Subscriber s){
+		listSub.removeElement(s);
+		s.removeMe();
+	}
+	
+	public void removeCategory(Category c){
+		listCat.removeElement(c);
+		listCat2.removeElement(c);
+		listCat3.removeElement(c);
+		c.removeMe();
+		listSub.addElement(null);
+		listSub.removeElement(null);
+	}
+	
 	public void addSubscriber(String name){
 		listSub.addElement(new Subscriber(name));
 	}
@@ -340,6 +434,7 @@ public class MainWindow {
 		Category c = new Category(name);
 		listCat.addElement(c);
 		listCat2.addElement(c);
+		listCat3.addElement(c);
 	}
 	
 	public void sendMessage(String message, Publisher publisher, Category cat){

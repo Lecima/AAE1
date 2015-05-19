@@ -22,7 +22,6 @@ abstract aspect ObserverAspect {
     public void   Subject.removeObserver(Observer obs) {
     	if(observers.contains(obs)){
 	        observers.removeElement(obs);
-	        obs.setSubject(null);
     	}
     }
     public Vector Subject.getObservers() { return observers; }

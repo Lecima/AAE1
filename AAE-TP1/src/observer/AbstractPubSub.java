@@ -29,4 +29,8 @@ public abstract class AbstractPubSub {
 	public String toString() {
 		return name;
 	}
+	
+	public void removeMe(){
+		
+	}
 }

@@ -47,7 +47,6 @@ aspect ObserverAspectImpl extends ObserverAspect {
     after(Publisher p): newCatPublisher(p){
     	for(Subscriber s : listSubscriber){
     		if(s.hasCat(p.getLastCategory())){
-    			System.out.println(p.getLastCategory());
     			p.addObserver(s);
     		}
     	}
@@ -59,6 +58,37 @@ aspect ObserverAspectImpl extends ObserverAspect {
     	!within(SubjectObserverProtocolImpl);
     after(Publisher p): newPublisher(p){
     	listPublisher.add(p);
+    }
+    
+    pointcut removePublisher(Publisher p):
+    	target(p) &&
+    	call(void Publisher.removeMe()) &&
+    	!within(SubjectObserverProtocolImpl);
+    after(Publisher p): removePublisher(p){
+    	listPublisher.remove(p);
+    }
+    
+    pointcut removeCategory(Category c):
+    	target(c) &&
+    	call(void Category.removeMe()) &&
+    	!within(SubjectObserverProtocolImpl);
+    after(Category c): removeCategory(c){
+    	for(Subscriber s : listSubscriber){
+    		if(s.hasCat(c)){
+    			s.removeCategory(c);
+    		}
+    	}
+    }
+    
+    pointcut removeSubscriber(Subscriber s):
+    	target(s) &&
+    	call(void Subscriber.removeMe()) &&
+    	!within(SubjectObserverProtocolImpl);
+    after(Subscriber s): removeSubscriber(s){
+    	for(Publisher p : listPublisher){
+    		p.removeObserver(s);
+    	}
+    	listSubscriber.remove(s);
     }
     
     pointcut newSubscriber(Subscriber s):
@@ -77,15 +107,17 @@ aspect ObserverAspectImpl extends ObserverAspect {
     	Signature sig = thisJoinPointStaticPart.getSignature();
     	String message = "";
     	if(sig.getName().equals("<init>")){
-    		message = m.getName() + " has been created.";
+    		message = "+++ " + m.getName() + " has been created.";
     	} else if(sig.getName().equals("sendMessage")){
-    		message = m.getName() + " sent a new message : " + m.getLastMessage() + " (" + m.getLastMessage().getCategory() + ")";
+    		message = ">>> " + m.getName() + " sent a new message : " + m.getLastMessage() + " (" + m.getLastMessage().getCategory() + ")";
     	} else if(sig.getName().equals("getMessage")){
-    		message = m.getName() + " has received a new message  : " + m.getLastMessage() + " (" + m.getLastMessage().getCategory() + ")";
+    		message = "< " + m.getName() + " has received a new message  : " + m.getLastMessage() + " (" + m.getLastMessage().getCategory() + ")";
     	} else if(sig.getName().equals("addCategory")){
-    		message = m.getName() + " has a new subscription : " + ((Subscriber)m).getLastCategory();
+    		message = "+ " + m.getName() + " subscribed : " + ((Subscriber)m).getLastCategory();
     	} else if(sig.getName().equals("removeCategory")){
-    		message = m.getName() + " unsubscribe : " + ((Subscriber)m).getLastCategory();
+    		message = "- " + m.getName() + " unsubscribed : " + ((Subscriber)m).getLastCategory();
+    	} else if(sig.getName().equals("removeMe")){
+    		message = "--- " + m.getName() + " has been removed.";
     	}
     	if(!message.equals("") && !message.equals(lastGUIMessage)){
     		MainWindow.mw.displayMessage(message);
