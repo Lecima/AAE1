@@ -43,9 +43,9 @@ import javax.swing.SwingConstants;
 
 import java.awt.Font;
 
-public class MainWindow {
+public class MainWindow implements IView {
 
-	private JFrame frmAaeTp;
+	public JFrame frmAaeTp;
 	private JTextField txtPublisher;
 	private JTextField txtSubscriber;
 	private JTextField txtMessage;
@@ -58,23 +58,7 @@ public class MainWindow {
 	public static MainWindow mw;
 	private JTextField txtCategory;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainWindow window = new MainWindow();
-					window.frmAaeTp.setVisible(true);
-					mw = window;
-					mw.defaultValues();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.
@@ -449,9 +433,11 @@ public class MainWindow {
 	
 	public void removeSubscribe(Category c, Subscriber s){
 		s.removeCategory(c);
+		listSub.addElement(null);
+		listSub.removeElement(null);
 	}
 	
-	private void defaultValues(){
+	public void defaultValues(){
 		addPublisher("New York Times");
 		addPublisher("USA Today");
 		addPublisher("Chicago Tribune");

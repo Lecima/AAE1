@@ -11,7 +11,7 @@ about the software, its performance or its conformity to any specification.
 */
 package observer;
 
-interface Observer {
+public interface Observer {
     void setSubject(Subject s);
     Subject getSubject();
     void update(Object o);

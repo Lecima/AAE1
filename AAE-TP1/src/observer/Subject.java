@@ -13,7 +13,7 @@ about the software, its performance or its conformity to any specification.
 package observer;
 import java.util.Vector;
 
-interface Subject {
+public interface Subject {
     void addObserver(Observer obs);
     void removeObserver(Observer obs);
     Vector getObservers();

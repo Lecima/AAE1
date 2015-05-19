@@ -8,12 +8,13 @@ import org.aspectj.lang.Signature;
 
 import views.DListModel;
 import views.MainWindow;
+import views.IView;
 
 aspect ObserverAspectImpl extends ObserverAspect {
 	private List<Publisher> listPublisher = new ArrayList<>();
 	private List<Subscriber> listSubscriber = new ArrayList<>();
 
-    declare parents: Publisher implements Subject;
+	declare parents: Publisher implements Subject;
     public Object Publisher.getData() { return this; }
     
     declare parents: Subscriber implements Observer;
@@ -24,9 +25,22 @@ aspect ObserverAspectImpl extends ObserverAspect {
     	}
     }
     
+    declare parents: ObserverAspectImpl implements Subject;
+    public Object ObserverAspectImpl.getData() { return this; }
+    
+    declare parents: IView implements Observer;
+    public void IView.update(Object o) {
+    	String m = ((ObserverAspectImpl)((Subject)o).getData()).getLastGUIMessage();
+    	displayMessage(m);
+    }
+    
     pointcut stateChanges(Subject s):
         target(s) &&
         call(void Publisher.sendMessage(..));
+    
+    pointcut stateChanges2(Subject s):
+        target(s) &&
+        call(void ObserverAspectImpl.setLastGUIMessage(..));
     
     pointcut newSubscribe(Subscriber s):
     	target(s) &&
@@ -50,6 +64,14 @@ aspect ObserverAspectImpl extends ObserverAspect {
     			p.addObserver(s);
     		}
     	}
+    }
+    
+    pointcut newView(IView v):
+    	initialization(IView.new(..)) &&
+    	target(v) &&
+    	!within(SubjectObserverProtocolImpl);
+    after(IView v): newView(v){
+    	this.addObserver(v);
     }
 
     pointcut newPublisher(Publisher p):
@@ -120,9 +142,17 @@ aspect ObserverAspectImpl extends ObserverAspect {
     		message = "--- " + m.getName() + " has been removed.";
     	}
     	if(!message.equals("") && !message.equals(lastGUIMessage)){
-    		MainWindow.mw.displayMessage(message);
-    		lastGUIMessage = message;
+    		//MainWindow.mw.displayMessage(message);
+    		setLastGUIMessage(message);
     	}
     }
+
+	public void setLastGUIMessage(String lastGUIMessage) {
+		this.lastGUIMessage = lastGUIMessage;
+	}
+
+	public String getLastGUIMessage() {
+		return lastGUIMessage;
+	}
     	
 }

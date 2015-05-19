@@ -11,6 +11,14 @@ abstract aspect ObserverAspect {
             ((Observer)s.getObservers().elementAt(i)).update(s);
         }
     }
+    
+    abstract pointcut stateChanges2(Subject s);
+
+    after(Subject s): stateChanges2(s) {
+        for (int i = 0; i < s.getObservers().size(); i++) {
+            ((Observer)s.getObservers().elementAt(i)).update(s);
+        }
+    }
 
     private Vector Subject.observers = new Vector();
     public void   Subject.addObserver(Observer obs) {
