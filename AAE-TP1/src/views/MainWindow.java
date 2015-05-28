@@ -155,7 +155,7 @@ public class MainWindow implements IView {
 		JLabel lblRemoveAPublisher = new JLabel("Remove a publisher     ");
 		panel.add(lblRemoveAPublisher);
 		
-		JComboBox comboBox_2 = new JComboBox();
+		final JComboBox comboBox_2 = new JComboBox();
 		comboBox_2.setModel(listPub);
 		comboBox_2.setMaximumRowCount(300);
 		panel.add(comboBox_2);
@@ -202,7 +202,7 @@ public class MainWindow implements IView {
 		JLabel lblRemoveACategory = new JLabel("Remove a category     ");
 		panel_4.add(lblRemoveACategory);
 		
-		JComboBox comboBox_4 = new JComboBox();
+		final JComboBox comboBox_4 = new JComboBox();
 		comboBox_4.setModel(listCat3);
 		comboBox_4.setMaximumRowCount(300);
 		panel_4.add(comboBox_4);
@@ -249,7 +249,7 @@ public class MainWindow implements IView {
 		JLabel lblRemoveASubscriber = new JLabel("Remove a subscriber   ");
 		panel_1.add(lblRemoveASubscriber);
 		
-		JComboBox comboBox_3 = new JComboBox();
+		final JComboBox comboBox_3 = new JComboBox();
 		comboBox_3.setModel(listSub);
 		comboBox_3.setMaximumRowCount(300);
 		panel_1.add(comboBox_3);
@@ -274,12 +274,12 @@ public class MainWindow implements IView {
 		JLabel lblSubscribe = new JLabel("Subscribe");
 		panel_2.add(lblSubscribe);
 		
-		JComboBox comboBox_1 = new JComboBox();
+		final JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setModel(listSub);
 		comboBox_1.setMaximumRowCount(300);
 		panel_2.add(comboBox_1);
 		
-		JComboBox comboBox = new JComboBox();
+		final JComboBox comboBox = new JComboBox();
 		comboBox.setModel(listCat);
 		comboBox.setMaximumRowCount(300);
 		panel_2.add(comboBox);
@@ -314,12 +314,12 @@ public class MainWindow implements IView {
 		JLabel lblSendAMessage = new JLabel("Send a message");
 		panel_3.add(lblSendAMessage);
 		
-		JComboBox comboBoxPublisher = new JComboBox();
+		final JComboBox comboBoxPublisher = new JComboBox();
 		comboBoxPublisher.setModel(listPub);
 		comboBoxPublisher.setMaximumRowCount(300);
 		panel_3.add(comboBoxPublisher);
 		
-		JComboBox comboBoxCategory = new JComboBox();
+		final JComboBox comboBoxCategory = new JComboBox();
 		comboBoxCategory.setModel(listCat2);
 		comboBoxCategory.setMaximumRowCount(300);
 		panel_3.add(comboBoxCategory);
